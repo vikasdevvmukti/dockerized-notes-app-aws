@@ -41,7 +41,8 @@ Image pushed and publicly available for pulling on any host.
 
 #### 5. Production Deployment — EC2 Container Status
 Same image pulled and running on AWS EC2, orchestrated via Docker Compose.
-<img width="1896" height="368" alt="Screenshot from 2026-09-07 16-24-52" src="https://github.com/user-attachments/assets/034a536d-c2e0-4b38-a416-3a43db4f5ac5" />
+<img width="1896" height="368" alt="Screenshot from 2026-09-07 16-24-52" src="https://github.com/user-attachments/assets/5e26c086-abf9-4ae9-a485-9db1bf443b82" />
+
 
 
 Note the MongoDB container has no published port — it's isolated inside the Docker network and reachable only by the app container.
