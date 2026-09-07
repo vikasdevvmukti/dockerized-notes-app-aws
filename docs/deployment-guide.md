@@ -160,7 +160,3 @@ sudo certbot --nginx -d your-subdomain.duckdns.org
 ```
 
 Verify HTTPS is working by visiting `https://your-subdomain.duckdns.org` — the padlock icon should confirm a valid certificate.
-
-   ```
-
-   followed by starting a new SSH session.
