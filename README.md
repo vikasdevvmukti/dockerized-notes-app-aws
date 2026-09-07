@@ -21,29 +21,35 @@ This project demonstrates end-to-end container workflow — from local developme
 
 #### 1. Local Development — App Running
 Verified the containerized app locally before deploying anywhere.
-<img width="1920" height="1080" alt="Local homepage" src="https://github.com/user-attachments/assets/replace-with-local-homepage" />
+<img width="1920" height="978" alt="Screenshot from 2026-09-07 15-58-36" src="https://github.com/user-attachments/assets/3ff7f704-d6d3-43a6-91e6-c6bd6b91a1d4" />
+
 
 #### 2. Local — Multi-Container Status
 Both `app` and `mongo` containers running via `docker compose up`.
-<img width="1261" height="373" alt="Local docker ps" src="https://github.com/user-attachments/assets/replace-with-local-docker-ps" />
+<img width="1261" height="371" alt="Screenshot from 2026-09-07 15-57-18" src="https://github.com/user-attachments/assets/bd5fda38-9598-481a-8dc7-ed67090368d4" />
+
 
 #### 3. API Verification (POST/GET with Database Persistence)
 Confirmed the app correctly writes to and reads from MongoDB.
-<img width="1914" height="843" alt="Local API test" src="https://github.com/user-attachments/assets/replace-with-local-api-test" />
+<img width="1270" height="697" alt="Screenshot from 2026-09-07 15-56-49" src="https://github.com/user-attachments/assets/0d321b35-0f34-4c6a-9768-e687ef6ddc48" />
+
 
 #### 4. Docker Hub — Published Image
 Image pushed and publicly available for pulling on any host.
-<img width="1917" height="931" alt="Docker Hub repository" src="https://github.com/user-attachments/assets/replace-with-dockerhub" />
+<img width="1917" height="928" alt="Screenshot from 2026-09-07 16-25-21" src="https://github.com/user-attachments/assets/b851ae7d-e61a-4522-96aa-1bcb7e1c5732" />
+
 
 #### 5. Production Deployment — EC2 Container Status
 Same image pulled and running on AWS EC2, orchestrated via Docker Compose.
-<img width="1896" height="376" alt="EC2 docker ps" src="https://github.com/user-attachments/assets/replace-with-ec2-docker-ps" />
+<img width="1896" height="368" alt="Screenshot from 2026-09-07 16-24-52" src="https://github.com/user-attachments/assets/034a536d-c2e0-4b38-a416-3a43db4f5ac5" />
+
 
 Note the MongoDB container has no published port — it's isolated inside the Docker network and reachable only by the app container.
 
 #### 6. Live Production Environment — HTTPS Secured
 The application accessible over a custom domain with a valid SSL certificate.
-<img width="1920" height="1029" alt="HTTPS live" src="https://github.com/user-attachments/assets/replace-with-https-live" />
+<img width="1920" height="1018" alt="Screenshot from 2026-09-07 16-26-00" src="https://github.com/user-attachments/assets/b69e7b51-a65c-4a2b-9d03-f6828faba270" />
+
 
 ---
 
@@ -64,9 +70,3 @@ The application accessible over a custom domain with a valid SSL certificate.
 * **/docker-compose.yml** — Local multi-container orchestration (app + MongoDB).
 * **/docs** — [Step-by-Step Deployment Guide](docs/deployment-guide.md) covering local setup, Docker Hub push, and EC2 deployment with Nginx + SSL.
 
----
-
-### ⚠️ Troubleshooting & Lessons Learned
-1. **`docker-compose` (v1) vs `docker compose` (v2):** The legacy Python-based `docker-compose` CLI threw a `URLSchemeUnknown` error due to a `requests`/`urllib3` version conflict. Resolved by switching to the Docker Compose v2 plugin (`docker compose`, no hyphen).
-2. **Push tag mismatch:** Initially pushed without specifying a tag, causing Docker to look for a non-existent `:latest` tag. Fixed by explicitly tagging and pushing the same version (`:v1`) consistently across build and push commands.
-3. **Docker permission denied on EC2:** The `ubuntu` user wasn't part of the `docker` group, causing a permission error on `docker ps`. Resolved by adding the user to the `docker` group (`usermod -aG docker $USER`) and starting a fresh session.
